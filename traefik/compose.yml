@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  traefik:
+    image: "traefik:v3.0"
+    container_name: "traefik"
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.rule=Host(`traefik.mydomain.com`)"
+      - "traefik.http.routers.api.middlewares=private-chain@file"
+      - "traefik.http.routers.api.service=api@internal"
+    ports:
+      - "443:443"
+      - "80:80"
+    environment:
+      - CF_DNS_API_TOKEN=your-api-token
+    volumes:
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./traefik.yml:/etc/traefik/traefik.yml:ro"
+      - "./dynamic:/dynamic"
+      - "./plugins:/plugins"
+    networks:
+      - traefik-proxy
+
+networks:
+  traefik-proxy:
+    external: true
