@@ -8,7 +8,7 @@ The example setup includes the following:
 - Middleware for internal only access (private IP ranges)
 - Middleware for publicy exposed services (includes geoblock, ratelimit & security-headers)
 
-For geoblocking the [nscuro geoblock plugin](github.com/nscuro/traefik-plugin-geoblock) is being used.
+For geoblocking the [nscuro geoblock plugin](https://github.com/nscuro/traefik-plugin-geoblock) is being used.
 
 ## Setup
 
