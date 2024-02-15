@@ -19,7 +19,7 @@ For geoblocking the [nscuro geoblock plugin](https://github.com/nscuro/traefik-p
 
 ## Middlewares
 
-For testing/demonstration purposes, the repo also contains two [whoami](whoami/compose.yml)` services.
+For testing/demonstration purposes, the repo also contains two [whoami](whoami/compose.yml) services.
 One of them uses the private middleware chain, the other one the public middleware.
 
 The private whoami service can only be accessed from internal IP addresses. The service using the public chain can be accessed from outside internal IP ranges. In order to increase security when exposing public services, it applies security-headers, ratelimits and geoblocking. In this example configuration, only requests from Germany are allowed.
